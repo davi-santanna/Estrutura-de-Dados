@@ -32,8 +32,8 @@ int main(void) {
     raiz->dir = criaNo('C');
     raiz->dir->esq = criaNo('D');
     raiz->dir->dir = criaNo('E');
-    imprime(raiz, 0);
-};
+    percorreSimetrica(raiz);
+}
 
 //criando funcoes para pilha
 
@@ -56,22 +56,24 @@ TNoA* pop(pilha*p){
         free(temp);
         return conteudo;
     }
-    else return '\0';
+    else return NULL;
 }
 
 void percorreSimetrica(TNoA* raiz)
 {
-    pilha*p;
-    noPilha*ini = (noPilha*)malloc(sizeof(noPilha));
+    pilha p;
+    inicializaPilha(&p);
     TNoA*atual = raiz;
-    p->topo = ini;
-    while(!raiz|| !p->topo){
-        while(!raiz){
+
+    while(atual != NULL|| p.topo != NULL){
+        while(atual != NULL){
             push(&p, atual);
             atual = atual->esq;
         }
         atual = pop(&p);
-        printf('%c', atual->info);
+        printf("%c", atual->info);
         atual = atual->dir;
     }
 }
+
+
