@@ -20,3 +20,8 @@ typedef struct pilha{
 TNoA *inicializa(void);
 void imprime(TNoA *nodo, int tab);
 TNoA *criaNo(char ch);
+
+void inicializaPilha(pilha *p);
+void push(pilha *p, TNoA *infoNoArvore);
+TNoA *pop(pilha *p);
+void percorreSimetrica(TNoA *raiz);
